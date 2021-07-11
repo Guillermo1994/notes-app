@@ -1,35 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+@extends('layouts.base')
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
-    <title>Notas</title>
-</head>
-<body>
-    
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <h1>Listado de notas</h1>
-                @foreach ($notes as $note)
-                    <div class="card my-4" style="width: 18rem;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{$note->title}}</h5>
-                            {{-- <p class="card-text">{{$note->content}}</p> --}}
-                            <a href="#" class="btn btn-primary">Ver nota</a>
-                        </div>
-                    </div>
-                @endforeach
+@section('content')
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <h1>Listado de notas</h1>
+        <a href="{{route('notas.create')}}" class="btn btn-sm btn-info">Crear notas</a>
+        @foreach ($notes as $note)
+            <div class="card my-4" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{$note->title}}</h5>
+                    {{-- <p class="card-text">{{$note->content}}</p> --}}
+                    <a href="#" class="btn btn-primary">Ver nota</a>
+                </div>
             </div>
-        </div>
+        @endforeach
     </div>
-
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
-</html>
+</div>
+@endsection

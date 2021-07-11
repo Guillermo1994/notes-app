@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use App\Http\Requests\NoteRequest;// validaciones
 
 class NoteController extends Controller
 {
@@ -25,7 +26,7 @@ class NoteController extends Controller
      */
     public function create()
     {
-        //
+        return view('notes.create');
     }
 
     /**
@@ -34,9 +35,12 @@ class NoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NoteRequest $request)
     {
-        //
+        //dd($request->all());
+        $validate = $request->validate();//para validar los campos antes de guardar
+        Note::create($request->all());
+        return redirect()->route('notas.index');
     }
 
     /**
